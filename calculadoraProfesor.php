@@ -22,9 +22,16 @@
             $_SESSION['num1'] .= $_POST['numero'];
             $_SESSION['num1'] .= ' ';
         }else if($_POST['numero'] == "N"){
-            $_SESSION['num1'] = "-";
+            $_SESSION['num1'] .= "-";
         }else if($_POST['numero'] == "="){
             $resultado = explode(" ", $_SESSION['num1']);
+            /*
+            for ($i = 0; $i < count($resultado); $i++) {
+                if ($resultado[$i] != "*" or $resultado[$i] != "/" or $resultado[$i] != "+" or $resultado[$i] != "-") {
+                    $resultado[$i] = floatval($resultado[$i]);
+                }
+            }
+            var_dump($resultado);*/
             while ($resultado[count($resultado)-1] == ""){
                 array_splice($resultado, count($resultado)-1, 1);
                 array_splice($resultado, count($resultado)-1, 1);
@@ -38,6 +45,7 @@
                     $resultado[$i] = $resultado[$i-1] * $resultado[$i+1];
                     array_splice($resultado, $i-1, 1);
                     array_splice($resultado, $i, 1);
+                    var_dump($resultado);
                 }else if ($resultado[$i] == "/") {
                     if ($resultado[$i+1] == 0) {
                         $resultado = ["Error"];
