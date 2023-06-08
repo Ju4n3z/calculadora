@@ -45,7 +45,6 @@
                     $resultado[$i] = $resultado[$i-1] * $resultado[$i+1];
                     array_splice($resultado, $i-1, 1);
                     array_splice($resultado, $i, 1);
-                    var_dump($resultado);
                 }else if ($resultado[$i] == "/") {
                     if ($resultado[$i+1] == 0) {
                         $resultado = ["Error"];
